@@ -17,11 +17,11 @@ while Victory <= 3:
     if tictactoefunctions.gamefinish(Board):
         break
     else:
-        selection = raw_input(' Please, player {}, introduce your field selection    '.format(Players[player]))
+        selection = raw_input(' Please, player {}, introduce your field selection    '.format(Players[player])).upper()
         Board, repeat = tictactoefunctions.turno(Board,selection,Players,player,repeat)
         if repeat:
             while repeat:
-                selection = raw_input(' Please, player {}, introduce your field selection    '.format(Players[player]))
+                selection = raw_input(' Please, player {}, introduce your field selection    '.format(Players[player])).upper()
                 Board, repeat = tictactoefunctions.turno(Board,selection,Players,player,repeat)
         Victory = tictactoefunctions.Victory_check(Board,player)
         tictactoefunctions.print_board(Board)
