@@ -10,6 +10,7 @@ def inicio():
     The empty Board dictionary is created. and printed.
     The names of the players are asked and stored in the list Players.
     '''
+    import random
     status =['-','X','0']
     Players=[]
     Board = {'A1':status[0], 'A2' :status[0], 'A3': status[0], 'B1':status[0],
@@ -17,11 +18,12 @@ def inicio():
              'C3': status[0]}
     print_board(Board)
     print ' Starting the Game!'
-    playerA = raw_input('Please, Introduce the name of the First player  ')
-    playerB = raw_input('Please, Introduce the name of the Second player  ')
+    playerA = raw_input('Please, Introduce the name of the First player  ').upper()
+    playerB = raw_input('Please, Introduce the name of the Second player  ').upper()
     Players =[playerA,playerB]
-    print ' {} starts first!'.format(Players[0])
-    player = 0
+    player = random.randint(0,1)
+    print ' {} starts first!'.format(Players[player])
+    
     return Board, Players, player, status
 
 
