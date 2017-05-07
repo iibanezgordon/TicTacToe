@@ -6,6 +6,7 @@ Started 05/05/2017
 """
 
 import tictactoefunctions
+from IPython.display import clear_output
 
 
 repeat = False 
@@ -30,6 +31,7 @@ while Victory <= 3:
             break
         else:
             player =int(1 - player) ## If player is 0, players changes to 1, if is 1, to 0
+            clear_output()
 
     
 
