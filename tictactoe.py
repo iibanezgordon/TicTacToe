@@ -10,28 +10,38 @@ from IPython.display import clear_output
 
 
 repeat = False 
-Victory = 0
-Board, Players, player, status = tictactoefunctions.inicio()
-
-while Victory <= 3:
-    if tictactoefunctions.gamefinish(Board):
-        break
-    else:
-        selection = raw_input(' Please, player {}, introduce your field selection    '.format(Players[player])).upper()
-        Board, repeat = tictactoefunctions.turno(Board,selection,Players,player,repeat)
-        if repeat:
-            while repeat:
-                selection = raw_input(' Please, player {}, introduce your field selection    '.format(Players[player])).upper()
-                Board, repeat = tictactoefunctions.turno(Board,selection,Players,player,repeat)
-        Victory = tictactoefunctions.Victory_check(Board,player)
-        tictactoefunctions.print_board(Board)
-        if Victory >= 3:
-            print ' Player {} Wins! congratulations'.format(Players[player])
-            print ' Execute the script again for another Game '
+Victory = False
+replay = True
+while replay :
+    Board, Players, player, status = tictactoefunctions.inicio()
+    while not Victory :
+        if tictactoefunctions.gamefinish(Board):
             break
         else:
-            player =int(1 - player) ## If player is 0, players changes to 1, if is 1, to 0
-            clear_output()
+            selection = raw_input(' Please, player {}, introduce your field selection    '.format(Players[player])).upper()
+            Board, repeat = tictactoefunctions.turno(Board,selection,Players,player,repeat)
+            if repeat:
+                while repeat:
+                    selection = raw_input(' Please, player {}, introduce your field selection    '.format(Players[player])).upper()
+                    Board, repeat = tictactoefunctions.turno(Board,selection,Players,player,repeat)
+            Victory = tictactoefunctions.Victory_check(Board,player)
+            tictactoefunctions.print_board(Board)
+            if Victory :
+                print ' Player {} Wins! congratulations '.format(Players[player])
+                print ' Execute the script again for another Game '
+                
+            else:
+                player =int(1 - player) ## If player is 0, players changes to 1, if is 1, to 0
+                clear_output()
+    replay = False 
+    tempreplay = raw_input(' Do you want to play the game again? Y/N    ').upper()
+    if tempreplay == 'Y':
+        replay = True
+    elif tempreplay == 'N':
+        replay = False
+    else:
+        print (' Sorry, The answer can not be computed... I will take this as a No')
+        replay = False
 
     
 

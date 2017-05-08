@@ -79,7 +79,7 @@ def Victory_check(Board,player):
     Function that checks the current Board with a Victory matrix to see if
     the current player has won.
     '''
-    Victory = 0
+    Victory = False
     if player == 0:
         status_check = 'X'
     else:
@@ -95,7 +95,6 @@ def Victory_check(Board,player):
             
     for item in Victory_matrix:
         iter_keys = item.keys()
-        Victory = False
         if item[iter_keys[0]] == Board[iter_keys[0]] and item[iter_keys[1]] == Board[iter_keys[1]] and item[iter_keys[2]] == Board[iter_keys[2]]:
             Victory = True
     return Victory
